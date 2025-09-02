@@ -1,1 +1,346 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>আলি — পোর্টফোলিও</title>
+  <meta name="description" content="আলির ব্যক্তিগত পোর্টফোলিও: প্রজেক্ট, দক্ষতা, অভিজ্ঞতা ও যোগাযোগ।" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="আলি — পোর্টফোলিও" />
+  <meta property="og:description" content="প্রজেক্ট, দক্ষতা, অভিজ্ঞতা ও যোগাযোগ।" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-username.github.io/" />
+  <!-- Favicons (optional)
+  <link rel="icon" href="/favicon.ico" />
+  -->
+
+  <style>
+    /* Reset & base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --bg: #0b1220;          /* dark */
+      --surface: #0f172a;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --brand: #0ea5e9;
+      --brand-2: #22d3ee;
+      --card: #111827;
+      --border: #1f2937;
+      --shadow: 0 10px 30px rgba(2, 8, 23, 0.5);
+    }
+    :root.light {
+      --bg: #f8fafc;          /* light */
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --brand: #0284c7;
+      --brand-2: #06b6d4;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 10px 24px rgba(2, 8, 23, 0.08);
+    }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 80% -20%, rgba(34,211,238,0.15), transparent 60%),
+                  radial-gradient(800px 400px at 0% 0%, rgba(14,165,233,0.18), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(12px);
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .nav a.brand { font-weight: 800; font-size: clamp(18px, 2vw, 20px); letter-spacing: 0.3px; color: var(--text); text-decoration: none; }
+    .nav ul { list-style: none; display: flex; gap: 18px; padding: 0; margin: 0; }
+    .nav li a { color: var(--muted); font-weight: 600; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--surface) 80%, transparent), var(--surface)); box-shadow: var(--shadow); color: var(--text); font-weight: 700; }
+    .btn:hover { transform: translateY(-1px); transition: transform .15s ease; text-decoration: none; }
+
+    /* Sections */
+    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; min-height: 68vh; }
+    .kicker { color: var(--brand-2); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; }
+    h1 { font-size: clamp(32px, 6vw, 54px); line-height: 1.1; margin: 10px 0 14px; }
+    .lead { font-size: clamp(16px, 2.1vw, 20px); color: var(--muted); }
+    .hero .actions { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+    .avatar-wrap { display: grid; place-items: center; }
+    .avatar { width: min(260px, 70%); aspect-ratio: 1; border-radius: 24px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); background: var(--card); display: grid; place-items: center; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 24px; }
+    .card { padding: 18px; border-radius: 18px; border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow); }
+    .card h3 { margin: 6px 0 8px; font-size: 18px; }
+    .muted { color: var(--muted); font-size: 14px; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--surface) 80%, transparent), var(--surface)); font-weight: 600; }
+
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 20px; }
+    .project { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); display: grid; grid-template-rows: auto 1fr auto; }
+    .project img { width: 100%; height: 160px; object-fit: cover; background: #111827; display: block; }
+    .project .content { padding: 14px 16px; }
+    .project h3 { margin: 2px 0 6px; font-size: 20px; }
+    .project .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .tag { font-size: 12px; border: 1px solid var(--border); padding: 6px 8px; border-radius: 999px; color: var(--muted); }
+    .project .footer { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-top: 1px solid var(--border); }
+
+    .timeline { position: relative; margin-top: 20px; }
+    .timeline::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .entry { position: relative; margin-left: 32px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); box-shadow: var(--shadow); }
+    .entry + .entry { margin-top: 12px; }
+    .dot { position: absolute; left: -6px; top: 16px; width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: 2px solid var(--bg); }
+
+    footer { text-align: center; padding: 50px 0; color: var(--muted); }
+
+    /* Utilities */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 24px; }
+      .avatar { width: 220px; }
+      .nav ul { display: none; }
+    }
+
+    /* Print */
+    @media print {
+      header, .hero .actions, .project img { display: none !important; }
+      section { padding: 18px 0; }
+      body { background: #fff; color: #000; }
+      a { color: #000; text-decoration: underline; }
+    }
+  </style>
+  <script>
+    // Theme: persist in localStorage
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      if (saved === 'light' || (!saved && prefersLight)) {
+        document.documentElement.classList.add('light');
+      }
+      window.toggleTheme = function(){
+        document.documentElement.classList.toggle('light');
+        localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+      }
+    })();
+
+    // Dynamic content: projects data (edit here)
+    const DATA = {
+      name: 'ali',
+      title: 'অ্যাপ ডেভেলপার',
+      location: 'ঢাকা, বাংলাদেশ',
+      email: 'you@example.com',
+      resumeUrl: '#', // আপনার রেজুমে লিংক দিন
+      avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=800&auto=format&fit=crop',
+      socials: [
+        { label: 'GitHub', url: 'https://github.com/your-username' },
+        { label: 'LinkedIn', url: 'https://linkedin.com/in/your-username' },
+        { label: 'X', url: 'https://x.com/your-username' }
+      ],
+      skills: ['Flutter', 'Dart', 'Firebase', 'Node.js', 'TypeScript', 'React', 'REST API', 'Git', 'CI/CD'],
+      projects: [
+        {
+          title: 'QR Attendance',
+          desc: 'স্কুলের জন্য অফলাইন/অনলাইন QR উপস্থিতি সিস্টেম।',
+          image: 'https://images.unsplash.com/photo-1605901309584-818e25960a8b?q=80&w=1200&auto=format&fit=crop',
+          tags: ['Flutter', 'Firebase'],
+          demo: '#',
+          code: '#'
+        },
+        {
+          title: 'Personal Finance App',
+          desc: 'খরচ ট্র্যাকিং, বাজেট, ক্যাশফ্লো চার্ট।',
+          image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop',
+          tags: ['Flutter', 'Riverpod'],
+          demo: '#',
+          code: '#'
+        },
+        {
+          title: 'Portfolio Template',
+          desc: 'হালকা, দ্রুত, SEO ফ্রেন্ডলি টেমপ্লেট।',
+          image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop',
+          tags: ['HTML', 'CSS', 'JS'],
+          demo: '#',
+          code: '#'
+        }
+      ],
+      experience: [
+        { role: 'Mobile Developer', company: 'Acme Soft', period: '2023 — বর্তমান', details: 'Flutter দিয়ে প্রোডাকশন অ্যাপ শিপিং, পারফরম্যান্স অপটিমাইজেশন, CI/CD।' },
+        { role: 'Frontend Engineer', company: 'Pixel Labs', period: '2021 — 2023', details: 'React/TypeScript UI, ডিজাইন সিস্টেম, অ্যাক্সেসিবিলিটি।' }
+      ]
+    };
+
+    // Render helpers
+    function el(html) { const d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
+    function mount() {
+      // Header links
+      document.getElementById('brand').textContent = DATA.name.toLowerCase();
+      const socialBar = document.getElementById('socials');
+      DATA.socials.forEach(s => socialBar.appendChild(el(`<a class="btn" href="${s.url}" target="_blank" rel="noreferrer noopener">${s.label}</a>`)));
+
+      // Hero
+      document.getElementById('title').textContent = DATA.title;
+      document.getElementById('location').textContent = DATA.location;
+      document.getElementById('lead').innerHTML = `আমি <strong>${DATA.name}</strong>, ${DATA.title} — সুন্দর, দ্রুত আর ব্যবহারবান্ধব অ্যাপ/ওয়েব বানাই।`;
+      document.getElementById('resume').href = DATA.resumeUrl;
+      document.getElementById('email').href = `mailto:${DATA.email}`;
+      document.getElementById('avatar').src = DATA.avatar;
+      document.getElementById('avatar').alt = DATA.name + ' avatar';
+
+      // Skills
+      const skills = document.getElementById('skills');
+      DATA.skills.forEach(sk => skills.appendChild(el(`<span class="chip">${sk}</span>`)))
+
+      // Projects
+      const grid = document.getElementById('projects');
+      DATA.projects.forEach(p => grid.appendChild(el(`
+        <article class="project">
+          <img src="${p.image}" alt="${p.title} preview" loading="lazy"/>
+          <div class="content">
+            <h3>${p.title}</h3>
+            <p class="muted">${p.desc}</p>
+            <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          </div>
+          <div class="footer">
+            <a class="btn" href="${p.demo}" target="_blank" rel="noreferrer noopener">Live</a>
+            <a class="btn" href="${p.code}" target="_blank" rel="noreferrer noopener">Code</a>
+          </div>
+        </article>`)))
+
+      // Experience
+      const tl = document.getElementById('timeline');
+      DATA.experience.forEach(x => tl.appendChild(el(`
+        <div class="entry">
+          <span class="dot" aria-hidden="true"></span>
+          <strong>${x.role}</strong> · ${x.company} · <span class="muted">${x.period}</span>
+          <div class="muted" style="margin-top:6px">${x.details}</div>
+        </div>`)))
+
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+    document.addEventListener('DOMContentLoaded', mount);
+  </script>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a id="brand" class="brand" href="#">ali</a>
+      <nav aria-label="primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button class="btn" onclick="toggleTheme()" aria-label="Toggle theme">থিম</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-label="Hero">
+      <div>
+        <div class="kicker">পোর্টফোলিও</div>
+        <h1 id="title">অ্যাপ ডেভেলপার</h1>
+        <p class="lead" id="lead">লোড হচ্ছে…</p>
+        <div class="hero badges" style="display:flex; gap:8px; align-items:center; margin: 10px 0;">
+          <span class="chip" id="location">ঢাকা</span>
+        </div>
+        <div class="actions">
+          <a id="resume" class="btn" href="#" target="_blank" rel="noreferrer noopener">রেজুমে</a>
+          <a id="email" class="btn" href="#">ইমেইল</a>
+          <div id="socials" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <div class="avatar">
+          <img id="avatar" alt="avatar" src="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-label="About">
+      <div class="grid-2">
+        <div>
+          <h2>আমি কে</h2>
+          <p class="muted">প্রোডাক্ট-কেন্দ্রিক ডেভেলপার, ইউজার এক্সপেরিয়েন্স আর পারফরম্যান্সে ফোকাস। Flutter দিয়ে মোবাইল অ্যাপ, আর ওয়েবে আধুনিক, এক্সেসিবল ইন্টারফেসে কাজ করি।</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>দ্রুত</h3>
+            <p class="muted">লীন, অপটিমাইজড কোড—শুরু থেকে পারফরম্যান্স মাথায় রেখে।</p>
+          </div>
+          <div class="card">
+            <h3>স্কেলেবল</h3>
+            <p class="muted">বর্ধিত ইউজারলোড সামলাতে আর্কিটেকচারাল ডিজাইন।</p>
+          </div>
+          <div class="card">
+            <h3>ডেভএক্স</h3>
+            <p class="muted">CI/CD, টেস্ট, অটো-রিলিজ—মেইন্টেনেবল ডেলিভারি।</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-label="Skills">
+      <h2>দক্ষতা</h2>
+      <div class="skills" id="skills"></div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-label="Projects">
+      <h2>প্রজেক্ট</h2>
+      <div class="projects" id="projects"></div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" aria-label="Experience">
+      <h2>অভিজ্ঞতা</h2>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-label="Contact">
+      <h2>যোগাযোগ</h2>
+      <p class="muted">প্রজেক্ট বা কলাবোরেশনের জন্য মেইল করুন।</p>
+      <div class="actions">
+        <a class="btn" id="email2" href="#">ইমেইল পাঠান</a>
+        <a class="btn" href="#hero">উপরে যান</a>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const email = DATA.email;
+          document.getElementById('email2').href = `mailto:${email}`;
+        });
+      </script>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> ali. সর্বস্বত্ব সংরক্ষিত।
+  </footer>
+
+</body>
+  </html>
 
